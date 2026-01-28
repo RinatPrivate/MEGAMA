@@ -15,7 +15,6 @@ namespace OpenHouseQuestions.Pages
             _service = service;
         }
 
-        // המשתנה שיחזיק את רשימת השאלות להצגה
         public List<Question> QuestionsList { get; set; }
 
         [BindProperty]
@@ -23,15 +22,23 @@ namespace OpenHouseQuestions.Pages
 
         public void OnGet()
         {
-            // טעינת השאלות בעת כניסה לדף
             QuestionsList = _service.GetQuestions();
         }
 
         public IActionResult OnPost()
         {
-            // שליחת שאלה חדשה
             _service.AddQuestion(NewQuestionContent);
-            return RedirectToPage(); // רענון הדף כדי לראות את השאלה החדשה
+            return RedirectToPage();
+        }
+
+        public IActionResult OnPostClear(string code)
+        {
+            if (code == "OPEN2026")
+            {
+                _service.ClearQuestions();
+            }
+
+            return RedirectToPage();
         }
     }
 }

@@ -26,5 +26,12 @@ namespace OpenHouseQuestions.Services
             // מחזיר את השאלות מהחדשה לישנה
             return _questions.OrderByDescending(q => q.SubmittedAt).ToList();
         }
+
+        //clear
+        public void ClearQuestions()
+        {
+            _questions.Clear();
+        }
+
     }
 }

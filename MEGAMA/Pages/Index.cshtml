@@ -207,5 +207,28 @@
         }, 3000);
     </script>
 
+    <!--//clear-->
+    <form method="post" onsubmit="return askCode(this);" style="display:inline;">
+        <input type="hidden" name="code" id="clearCode" />
+        <button type="submit"
+                asp-page-handler="Clear"
+                class="btn btn-light"
+                title="רענון ערב"
+                style="border-radius:50%; width:45px; height:45px;">
+            🔄
+        </button>
+    </form>
+
+    <script>
+        function askCode(form) {
+            const code = prompt("הכניסי קוד מנהל:");
+            if (!code) return false;
+            document.getElementById("clearCode").value = code;
+            return true;
+        }
+    </script>
+
+
+
 </body>
 </html>
